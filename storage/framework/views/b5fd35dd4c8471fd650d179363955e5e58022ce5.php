@@ -1,0 +1,1 @@
+<h1>Login</h1><?php /**PATH D:\wamp64\www\pgpoint\app\Modules/Sites/Views/home/index.blade.php ENDPATH**/ ?>

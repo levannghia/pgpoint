@@ -1,0 +1,242 @@
+.mains {
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #171921;
+}
+
+.cen {
+    position: initial;
+}
+
+.cen img {
+    width: 100%;
+}
+
+.fri {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.mail p {
+    color: white;
+}
+
+.inputs {
+    background-color: #5A5A5A;
+    border: 1px;
+    width: 70%;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    padding: 12px;
+}
+
+.static {
+    background-color: #5a5a5a;
+    margin-top: 10px;
+    display: flex;
+    height: 40px;
+    width: 70%;
+    border-radius: 5px;
+    color: white;
+}
+
+.static input {
+    padding: 12px;
+    margin-bottom: 0px;
+    width: 82%;
+    text-align: initial;
+    border: 0px;
+    background-color: #f0f8ff00;
+}
+
+.static button {
+    float: right;
+    /* padding: 5px; */
+    color: #ef8d21;
+    border: 0px;
+    background-color: #f3f3f300;
+}
+
+.lin {
+    display: flex;
+}
+
+.lin p {
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+}
+
+.mail button {
+    background-color: #EF8D21;
+    border: 7px solid #EF8D21;
+    border-radius: 5px;
+    height: 38px;
+    margin-left: 10px;
+    color: white;
+    font-weight: 11px;
+    font-weight: 600;
+}
+
+
+/*Ipad ngang(1024 x 768)*/
+
+@media screen and (max-width: 1024px) {
+    .static {
+        width: 65%;
+    }
+    .static input {
+        width: 77%;
+    }
+    .inputs {
+        width: 65%;
+    }
+    .mains {
+        padding-top: 45px;
+    }
+}
+
+
+/*Ipad dọc(768 x 1024)*/
+
+@media screen and (max-width: 768px) {
+    .cen {
+        position: initial;
+    }
+    .cen img {
+        width: 100%;
+    }
+    .mail button {
+        color: white;
+        font-size: 10px;
+        margin-bottom: 0px;
+    }
+    .na {
+        display: flex;
+    }
+    .inputs {
+        width: 68%;
+    }
+    .static {
+        width: 72%;
+    }
+    .static input {
+        width: 70%;
+    }
+}
+
+
+/*Tablet nhỏ(480 x 640)*/
+
+@media screen and (max-width: 480px) {
+    .cen {
+        position: initial;
+        transform: translate(8%, -10%);
+        width: 88%;
+    }
+    .cen img {
+        width: 100%;
+    }
+    button p {
+        margin-bottom: -5px;
+    }
+    .static {
+        width: 77%;
+    }
+    .static input {
+        width: 77%;
+    }
+    .inputs {
+        width: 73%;
+    }
+    .mains {
+        padding-top: 90px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .mail button {
+        color: white;
+        font-size: 8px;
+    }
+    .static {
+        width: 95%;
+    }
+    .static input {
+        width: 73%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .mail button {
+        color: white;
+        font-size: 8px;
+        width: 30%;
+    }
+    .static {
+        width: 84%;
+    }
+    .static input {
+        width: 68%;
+        padding: 0px 0px 0px 12px;
+        font-size: 13px;
+    }
+}
+
+
+/*Iphone(480 x 640)*/
+
+@media screen and (max-width: 320px) {
+    .static {
+        width: 84%;
+    }
+    .static button {
+        font-size: 12px;
+    }
+    .mail button {
+        font-size: 8px;
+        width: 36%;
+    }
+    .static input {
+        width: 66%;
+        font-size: 13px;
+    }
+}
+
+
+/*Smart phone nhỏ*/
+
+@media screen and (max-width: 240px) {
+    .inputs {
+        font-size: 12px;
+    }
+    .lin p {
+        padding-left: 10px;
+        margin-bottom: 0px;
+        padding-top: 17px;
+        width: 25px;
+        transform: translate(8%, -27%);
+    }
+    .lin a img {
+        width: 175%;
+    }
+    .mail p,
+    .fri p {
+        color: white;
+        font-size: 15px;
+    }
+    #re {
+        font-size: 12px;
+    }
+    .static button {
+        font-size: 8px;
+    }
+    .static input {
+        width: 66%;
+        font-size: 10px;
+    }
+}
