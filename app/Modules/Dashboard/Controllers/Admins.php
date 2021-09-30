@@ -17,12 +17,6 @@ use Illuminate\Support\Facades\Cookie;
 
 class Admins extends Controller{
 
-    public function __construct()
-    {
-        //$className = explode("\\", get_class())[4];
-       
-    }
-
     public function index(){
         $data = null;
         if (Cookie::get('search_admin') == "") {

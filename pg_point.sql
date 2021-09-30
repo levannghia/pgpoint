@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 28, 2021 at 03:21 AM
+-- Generation Time: Sep 28, 2021 at 09:26 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -20,39 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pg_point`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `app`
---
-
-DROP TABLE IF EXISTS `app`;
-CREATE TABLE IF NOT EXISTS `app` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `app_key`
---
-
-DROP TABLE IF EXISTS `app_key`;
-CREATE TABLE IF NOT EXISTS `app_key` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app_id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -108,6 +75,46 @@ CREATE TABLE IF NOT EXISTS `la_admins_role` (
 INSERT INTO `la_admins_role` (`id`, `admins_id`, `role_id`) VALUES
 (2, 1, 1),
 (3, 10, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_app`
+--
+
+DROP TABLE IF EXISTS `la_app`;
+CREATE TABLE IF NOT EXISTS `la_app` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `la_app`
+--
+
+INSERT INTO `la_app` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Trader Class', 1, '2021-06-24 22:10:02', '2021-09-28 14:28:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_app_key`
+--
+
+DROP TABLE IF EXISTS `la_app_key`;
+CREATE TABLE IF NOT EXISTS `la_app_key` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1133,7 +1140,9 @@ INSERT INTO `la_permission` (`id`, `name`, `note`) VALUES
 (4, 'Blog', 'Quản lý blog, tin tức, bài viết,...'),
 (5, 'Admin', 'quản lý tài khoản admin'),
 (6, 'Access Management', 'Phân quyền'),
-(7, 'Config', 'Cau hinh he thong');
+(7, 'Config', 'Cau hinh he thong'),
+(8, 'Users', 'danh sach user'),
+(9, 'App', 'Dach sach trang web');
 
 -- --------------------------------------------------------
 
@@ -1452,7 +1461,7 @@ CREATE TABLE IF NOT EXISTS `la_role_permission` (
   `deletes` int(11) NOT NULL,
   `edits` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_role_permission`
@@ -1464,7 +1473,9 @@ INSERT INTO `la_role_permission` (`id`, `role_id`, `permission_id`, `ClassName`,
 (3, 1, 4, 'Blog', 1, 0, 0, 0),
 (4, 1, 5, 'Admins', 1, 1, 1, 1),
 (5, 1, 6, 'Role', 1, 0, 1, 0),
-(13, 1, 7, 'Config', 1, 0, 0, 1);
+(13, 1, 7, 'Config', 1, 0, 0, 1),
+(23, 1, 8, 'Users', 1, 1, 1, 1),
+(24, 1, 9, 'App', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1659,19 +1670,27 @@ CREATE TABLE IF NOT EXISTS `la_transaction_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `la_user`
+-- Table structure for table `la_users`
 --
 
-DROP TABLE IF EXISTS `la_user`;
-CREATE TABLE IF NOT EXISTS `la_user` (
+DROP TABLE IF EXISTS `la_users`;
+CREATE TABLE IF NOT EXISTS `la_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `photo` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `app_id` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `la_users`
+--
+
+INSERT INTO `la_users` (`id`, `photo`, `email`, `app_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'data:image/jpeg;base64,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', 'Nghia@gmail.com', 1, 1, '2021-07-08 11:06:03', '2021-09-28 13:32:05');
 
 -- --------------------------------------------------------
 

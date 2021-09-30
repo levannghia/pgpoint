@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 @endif
-                @if(Gate::allows('view', 'Blog'))
+                {{-- @if(Gate::allows('view', 'Blog'))
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
@@ -26,8 +26,49 @@
                         </li>
                     </ul>
                 </li>
+                @endif --}}
+                @if(Gate::allows('view', 'Users'))
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-user"></i>
+                        <span> User </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
+                        <li class="">
+                            <a href="/dashboard/users">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
-
+                @if(Gate::allows('view', 'App'))
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fa fa-rocket"></i>
+                        <span> App </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
+                        <li class="">
+                            <a href="/dashboard/app">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if(Gate::allows('view', 'App'))
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fa fa-history"></i>
+                        <span> Transaction History </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
+                        <li class="">
+                            <a href="/dashboard/transaction">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
                 <li class="menu-title mt-2">Hệ thống</li>
                 @if(Gate::allows('view', 'Admins'))
                 <li>

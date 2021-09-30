@@ -10,24 +10,49 @@
                     </a>
                 </li>
                 <?php endif; ?>
-                <?php if(Gate::allows('view', 'Blog')): ?>
+                
+                <?php if(Gate::allows('view', 'Users')): ?>
                 <li>
                     <a href="javascript: void(0);">
-                        <i class="fe-file-text"></i>
-                        <span> Blog </span>
+                        <i class="fe-user"></i>
+                        <span> User </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
                         <li class="">
-                            <a href="/dashboard/blog">Bài viết</a>
-                        </li>
-                        <li class="">
-                            <a href="/dashboard/blog-category">Chuyên mục</a>
+                            <a href="/dashboard/users">Danh sách</a>
                         </li>
                     </ul>
                 </li>
                 <?php endif; ?>
-
+                <?php if(Gate::allows('view', 'App')): ?>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fa fa-rocket"></i>
+                        <span> App </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
+                        <li class="">
+                            <a href="/dashboard/app">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <?php endif; ?>
+                <?php if(Gate::allows('view', 'App')): ?>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fa fa-history"></i>
+                        <span> Transaction History </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav collapse" aria-expanded="false" style="">
+                        <li class="">
+                            <a href="/dashboard/transaction">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <?php endif; ?>
                 <li class="menu-title mt-2">Hệ thống</li>
                 <?php if(Gate::allows('view', 'Admins')): ?>
                 <li>
